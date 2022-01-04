@@ -1,0 +1,49 @@
+Usage Examples
+View help:
+duplicity-backup.sh
+
+Run an incremental backup:
+duplicity-backup.sh -c /root/duplicity-backup.conf --backup
+
+Force a one-off full backup:
+duplicity-backup.sh -c /root/duplicity-backup.conf --full
+
+Restore your entire backup:
+# You will be prompted for a restore directory
+duplicity-backup.sh -c /root/duplicity-backup.conf --restore
+
+# You can also provide a restore folder on the command line.
+duplicity-backup.sh -c /root/duplicity-backup.conf --restore /home/user/restore-folder
+
+Restore a specific file or directory in the backup:
+Note that the commands --restore-file and --restore-dir are equivalent.
+
+# You will be prompted for a file to restore to the current directory
+duplicity-backup.sh -c /root/duplicity-backup.conf--restore-file
+
+# Restores the file var/www/master-instruments/htdocs/pages/contact-us.html to /tmp/contact-us.html from 3 DAYS AGO
+duplicity-backup.sh -c /root/duplicity-backup.conf --restore-file var/www/test/htdocs/pages/contact-us.html /tmp/contact-us.html -t 3D
+
+# Restores the file img/mom.jpg to the current directory
+duplicity-backup.sh -c /root/duplicity-backup.conf --restore-file img/mom.jpg
+
+# Restores the file img/mom.jpg to /home/user/i-love-mom.jpg
+duplicity-backup.sh -c /root/duplicity-backup.conf --restore-file img/mom.jpg /home/user/i-love-mom.jpg
+
+# Restores the directory rel/dir/path to /target/restorepath
+duplicity-backup.sh -c /root/duplicity-backup.conf --restore-dir rel/dir/path /target/restorepath
+
+List files in the remote archive
+duplicity-backup.sh -c /root/duplicity-backup.conf --list-current-files
+
+See the collection status (i.e. all the backup sets in the remote archive)
+duplicity-backup.sh -c /root/duplicity-backup.conf --collection-status
+
+Verify the backup
+duplicity-backup.sh -c /root/duplicity-backup.conf --verify
+
+Clean the backup
+duplicity-backup.sh -c /root/duplicity-backup.conf --cleanup
+
+# To Restore from a specific Time use the following "-t 3D" for 3 days ago or an interval, which is a number followed by 
+# one of the characters s, m, h, D, W, M, or Y (indicating seconds, minutes, hours, days, weeks, months, or years respectively)
