@@ -1,0 +1,19 @@
+ssh-keygen -t rsa -b 4096 -C "rocky@rocky.local"
+########################################################################## 
+grep -rl 'prod4.domain.com.au' ./ | xargs sed -i 's/prod4.domain.com.au/prod1.domain.com.au/g'
+grep -rl '202.41.11.180' ./ | xargs sed -i 's/202.41.11.180/202.41.11.170/g'
+grep -v ^# /etc/ssh/sshd_config
+##########################################################################
+find -type f -print0 | xargs -r0 grep -F 'example'         Search all regular files for 'example' in this dir and below
+find -maxdepth 1 -type f | xargs grep -F 'example'      Search all regular files for 'example' in this dir
+find -type f ! -perm -444                                          Find files not readable by all (useful for web site)
+find -type d ! -perm -111                                         Find dirs not accessible by all (useful for web site)
+##########################################################################
+ln -s /usr/bin/perl splash_perl
+##########################################################################
+apt-get install netselect-apt
+netselect-apt -c australia -t 15 -a amd64 -n stable
+##########################################################################
+iperf -s -i 5 -p 443
+iperf -c 10.214.242.33 -i 5 -l 100000 -t 20 -p 443
+##########################################################################
