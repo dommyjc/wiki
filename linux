@@ -1,5 +1,14 @@
 ssh-keygen -t rsa -b 4096 -C "rocky@rocky.local"
 ########################################################################## 
+Copy a Local directory using recursive to a Remote System with the scp Command
+scp -r /local/directory remote_username@10.10.0.2:/remote/directory
+
+Copy a Remote File to a Local System using the scp Command
+scp remote_username@10.10.0.2:/remote/file.txt /local/directory
+
+Copy a File Between Two Remote Systems using the scp Command (To route the traffic through the machine on which the command is issued, use the -3 option)
+scp -3 user1@host1.com:/files/file.txt user2@host2.com:/files
+########################################################################## 
 grep -rl 'prod4.domain.com.au' ./ | xargs sed -i 's/prod4.domain.com.au/prod1.domain.com.au/g'
 grep -rl '202.41.11.180' ./ | xargs sed -i 's/202.41.11.180/202.41.11.170/g'
 grep -v ^# /etc/ssh/sshd_config
