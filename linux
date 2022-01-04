@@ -17,3 +17,28 @@ netselect-apt -c australia -t 15 -a amd64 -n stable
 iperf -s -i 5 -p 443
 iperf -c 10.214.242.33 -i 5 -l 100000 -t 20 -p 443
 ##########################################################################
+To check the directory with largest sizes in kilo bytes 
+du -sk * | sort +0nr (largest size at top)
+du -sk * | sort -nr
+
+To check the directory with largest sizes in Mega bytes
+du -sm * | sort +0nr(largest size at top)
+du -sm * | sort -nr
+
+To check the directory with largest sizes in kilo bytes
+du -sk * | sort +0n(largest at bottom)
+du -sk * | sort -n
+
+To check the directory with largest sizes in Mega bytes
+du -sm * | sort +0n(largest at bottom)
+du -sm * | sort -n
+
+To check the size of hidden directories
+du -sk .[a-z]* | sort +0nr
+
+To check the size of all the files and directorires including hidden files and directories
+du -sk .[a-z]* * | sort +0n
+
+To list all the directories  with above 1GB  size
+du -h | grep ^[0-9.]*G
+##########################################################################
