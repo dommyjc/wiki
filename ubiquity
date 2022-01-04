@@ -1,0 +1,6 @@
+Reset Remote Unifi AP to controller: 
+ssh to unifi ap
+syswrapper.sh restore-default
+ubnt/ubnt login 
+mca-cli
+set-inform http://192.168.50.200:8080/inform
