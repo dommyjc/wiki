@@ -1,0 +1,17 @@
+#Check status
+fail2ban-client status
+
+#To check the status
+fail2ban-client status sshd
+
+#To check the regular expression matching
+fail2ban-regex /var/log/auth.log /etc/fail2ban/filter.d/sshd.conf
+
+#To generate an sshd ban
+fail2ban-client -vvv set sshd banip 192.0.2.0
+
+#Verify that the f2b-sshd chain is created with the ban rule in it
+iptables -L
+
+# Remove the ban
+fail2ban-client -vvv set sshd unbanip 192.0.2.0
